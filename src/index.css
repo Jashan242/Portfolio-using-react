@@ -1,13 +1,774 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Great+Vibes&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root{
+    --background:rgb(24,24,24);
+    --second-background:rgb(21,21,21);
+    --main-color: linear-gradient(to right, #6cff52, #3ec5ff);;
+}
+
+body{
+    min-height: 100vh;
+    background-color: var(--background);
+}
+
+section{
+    min-height: 100vh;
+    padding: 5% 15%;
+}
+
+/* Home Css */
+#home{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  color: white;
+}
+
+#home img{
+  width: 18vw;
+  border-radius: 45%;
+  margin-top: 3em;
+  box-shadow: 0 0 25px #6cff52;
+}
+
+.social-icons a{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  padding: 1rem;
+  background: transparent;
+  background: var(--main-color); /* This will apply the gradient background */
+  -webkit-background-clip: text; /* This ensures that the background gradient is clipped to the text */
+  -webkit-text-fill-color: transparent;
+  margin: 1rem;
+  border: 2px solid var(--main-color);
+  border-radius: 50%;
+  transition: 0.3s ease;
+}
+
+.social-icons a:hover{
+  color: white;
+  transform: scale(1.2)translateY(-5px);
+  box-shadow: 0 0 25px var(--main-color);
+}
+
+.btn-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+  gap: 1em;
+}
+
+.btn {
+  position: relative;
+  padding: 0.5em 2em; /* Adjusted padding */
+  color: black;
+  font-weight: 800;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  background-color: transparent;
+  border-radius: 2px;
+  z-index: 1; /* Make sure the button content stays on top */
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: -4px; /* Adjust this value to increase or decrease the gap */
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: linear-gradient(to right, #6cff52, #3ec5ff);
+  border-radius: 4px; /* Adjust the radius to match the button's shape */
+  z-index: -1; /* Place the border behind the button content */
+}
+
+
+.btn:hover::before {
+  transform: scale(1.05); /* Slight enlargement on hover */
+}
+
+/* Add text hover effect and inner background animation */
+.btn:hover {
+  font-size: 1.3em; /* Change text color on hover */
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #3ec5ff, #6cff52);
+  z-index: -1;
+  transition: all 0.4s ease;
+  transform: scaleX(0); /* Hidden by default */
+  transform-origin: left;
+}
+
+.btn:hover::after {
+  transform: scaleX(1); /* Expands from left to right on hover */
+}
+
+.info{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 1em;
+  max-width: 600px;
+}
+
+.info h1{
+  font-size: 5em;
+  font-weight: 500;
+}
+
+.info h3{
+  font-size: 2em;
+  font-weight: 400;
+}
+
+.info p{
+  margin-top: 20px;
+  font-size: 1.2em;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 0.1em;
+  width: 10px;
+  height: 2rem;
+  background-color: #fff;
+  animation: blink 1s step-end infinite;
+}
+
+/* Blinking animation */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* About Css */
+
+
+#about{
+  background-color: var(--second-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5em;
+}
+
+.about-box{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.about-box h1{
+  font-size: 5em;
+}
+
+.about-box p{
+  color: white;
+  opacity: 0.8;
+}
+
+.about-box h2{
+  text-align: center;
+  font-size: 70px;
+}
+
+.about-box h3{
+  color: #ffffff;
+  font-size: 1.5em;
+}
+
+.about-info p{
+font-family: 'Times New Roman', Times, serif;
+font-size: 20px;
+}
+
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 10px;
+  padding: 20px;
+  font-size: 30px;
+}
+
+.skills-item {
+  flex: 1 1 calc(20% - 10px); /* Each item takes up 20% of the container's width minus some space for margin */
+  margin: 5px;
+  padding: 10px;
+  text-align: center;
+  background-color: black; /* Black background */
+  color: white; /* White text color */
+  border: 5px solid;
+  border-image: linear-gradient(to right, #6cff52, #3ec5ff);
+  border-image-slice: 1;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skills-item:hover {
+  transform: scale(1.05); /* Slightly increase the size */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+}
+
+.skills ul{
+  font-size: 1.3em;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-items: baseline;
+  opacity: 0.6;
+}
+
+.skills ul li{
+  font-size: 1.2em;
+  transition: 0.3s ease-in-out;
+}
+
+.skills ul li:hover{
+  transform: translateX(10px);
+}
+
+.about-box h2{
+  font-size: 2.5em;
+}
+
+/* Projects */
+
+
+.projects-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  max-width: 100%; /* Ensure the container uses the full available width */
+}
+
+.project-item {
+  position: relative;
+  width: 30%;  /* Two items in a row */
+  height: 350px; /* Adjust height as needed */
+  margin: 10px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #000;
+  border: 5px solid;
+  border-image: linear-gradient(to right, #6cff52, #3ec5ff) 1;
+  box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+.project-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.project-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+.project-content h2 {
+  margin: 0 0 10px;
+  font-size: 28px;
+  background: linear-gradient(to right, #6cff52, #3ec5ff); /* Gradient background */
+-webkit-background-clip: text; /* Clip background to text */
+color: transparent; /* Make text color transparent to show gradient */
+}
+
+.project-content p {
+  margin: 0;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.project-content p-tech{
+  font-size: 20px;
+  text-align: center;
+}
+
+.project-item:hover .project-content {
+  opacity: 1;
+}
+
+.project-link {
+display: flex;
+flex-direction: column;
+gap: 0;  /* No gap between flex items */
+align-items: center;  /* Ensure everything is centered */
+}
+
+.project-link i {
+font-size: 24px;
+color: #00bfff;
+margin: 0;  /* Remove any default margins */
+padding: 0;  /* Remove any padding */
+}
+
+.project-link p {
+margin: 0;  /* Remove any margin */
+padding: 0;  /* Remove any padding */
+text-decoration: none;  /* Ensure the link has no underline */
+color: #00ff00;  /* Update the color for the "Know More" text */
+}
+
+.header{
+  text-align: center;
+  font-size: 5em;
+  margin: 0.5em 0;
+}
+
+/* Contact */
+
+#contact {
+  padding: 50px 0;
+  background-color: var(--second-background);
+  color: #fff;
+}
+
+
+#contact .header {
+text-align: center;
+margin: 0.5em 0;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3em;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-info {
+  text-align: left;
+  font-size: 24px;
+}
+
+.contact-info h2 {
+  font-size: 3rem;
+  /* margin-top: 10px; */
+  padding-top: 20px;
+}
+
+.contact-info p {
+  margin: 5px 0;
+  font-size: 1.5rem;
+}
+
+.contact-info .heading{
+margin: 5px 0;
+font-size: 1.2rem;
+}
+
+.contact-info a {
+  color: #3ec5ff;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+.contact-form {
+  background-color: var(--second-background);
+  padding: 2em;
+  border: 2px solid;
+  border-image: linear-gradient(to right, #6cff52, #3ec5ff);
+  border-image-slice: 1;
+  border-radius: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+}
+
+form .input-box {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  gap: 1em;
+  width: 100%;
+}
+
+.input-box span {
+  font-size: 1.5em;
+  color: #fff;
+}
+
+form input, textarea {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1em;
+  margin-bottom: 1em;
+  padding: 1em;
+  width: 100%;
+  border: 1px solid #666;
+  border-radius: 0.5em;
+  background-color: transparent;
+  color: #fff;
+}
+
+form input:focus, form textarea:focus {
+  background-color: rgb(229, 229, 229);
+  color: #000;
+  outline: none;
+}
+
+textarea {
+  resize: none;
+}
+
+.send-btn {
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 2px solid #3ec5ff;
+  color: #3ec5ff;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0.5em;
+  width: 100%;
+  font-size: 1.2em;
+}
+
+.send-btn:hover {
+  background-color: #3ec5ff;
+  color: #fff;
+}
+
+/* Footer */
+
+#footer {
+background-color: var(--main-color);
+color: #fff;
+text-align: center;
+border-top: 2px solid #444;
+}
+
+.footer-container {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+max-width: 1200px;
+}
+
+.footer-bottom{
+margin-bottom: 10px;
+}
+
+/* Default CSS for all sections is already written, let's add responsiveness */
+@media (max-width: 1200px) {
+  section {
+      padding: 5% 10%;
+  }
+
+  .info h1 {
+      font-size: 4em;
+  }
+
+  .info h3 {
+      font-size: 1.8em;
+  }
+
+  .info p {
+      font-size: 1.1em;
+  }
+
+  .btn {
+      font-size: 1em;
+      padding: 0.4em 1.8em;
+  }
+
+  .about-box h1 {
+      font-size: 4em;
+  }
+
+  .about-box h2 {
+      font-size: 3.5em;
+  }
+
+  .skills-item {
+      flex: 1 1 calc(33% - 10px); /* Change from 20% to 33% on medium screens */
+  }
+
+  .project-item {
+      width: 45%; /* Show two items in a row */
+  }
+
+  .contact-info h2 {
+      font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  section {
+      padding: 5% 7%;
+  }
+
+  .info h1 {
+      font-size: 3.5em;
+  }
+
+  .info h3 {
+      font-size: 1.6em;
+  }
+
+  .btn {
+      font-size: 0.9em;
+      padding: 0.4em 1.5em;
+  }
+
+  #home img {
+      width: 25vw;
+  }
+
+  .about-box h1 {
+      font-size: 3.5em;
+  }
+
+  .about-box h2 {
+      font-size: 3em;
+  }
+
+  .skills-item {
+      flex: 1 1 calc(50% - 10px); /* 2 items per row */
+  }
+
+  .project-item {
+      width: 45%;
+  }
+
+  .contact-info h2 {
+      font-size: 2.2rem;
+  }
+
+  .footer-container {
+      flex-direction: column;
+      align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Home Section */
+  #home {
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center align content */
+    padding-top: 2em; /* Ensure some space from the top */
+  }
+
+  #home img {
+      width: 40vw; /* Adjust image size for smaller screens */
+      margin-top: 2em; /* Add space between the image and the top */
+  }
+
+  .info h1 {
+      font-size: 3em;
+  }
+
+  .info h3 {
+      font-size: 1.4em;
+  }
+
+  .info p {
+      font-size: 1em;
+  }
+
+  .btn {
+      font-size: 0.8em;
+  }
+
+  /* About Section */
+  #about {
+      flex-direction: column;
+      text-align: center;
+      gap: 3em;
+  }
+
+  .about-box h1 {
+      font-size: 3em;
+  }
+
+  .about-box h2 {
+      font-size: 2.5em;
+  }
+
+  .about-box h3 {
+      font-size: 1.3em;
+  }
+
+  .about-box p {
+      font-size: 1.2em;
+  }
+
+  .skills-item {
+      flex: 1 1 100%; /* Single item per row */
+  }
+
+  /* Projects Section */
+  .projects-container {
+      flex-direction: column;
+  }
+
+  .project-item {
+      width: 90%; /* Make the project items take up full width */
+      margin: 20px auto;
+  }
+
+  /* On hover, show title and Know More */
+  .project-item:hover .project-content {
+      opacity: 1;
+  }
+
+  .project-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+  }
+
+  .project-content h2 {
+      font-size: 22px;
+  }
+
+  .project-content p {
+      font-size: 16px;
+  }
+
+  /* Contact Section */
+  .contact-container {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .contact-form {
+    max-width: 500px; /* Reduce form width */
+    padding: 1.5em; /* Adjust padding */
+  }
+
+  .contact-info h2 {
+      font-size: 2rem;
+  }
+
+  .contact-info p {
+      font-size: 1.2rem;
+  }
+
+  form input, textarea {
+      font-size: 1em;
+      padding: 1em;
+  }
+
+  /* Footer */
+  .footer-container {
+      flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Home Section */
+  #home img {
+      width: 40vw; /* Reduce image size further */
+  }
+
+  #home img {
+    width: 50vw; /* Further reduce image size for very small screens */
+    margin-top: 4em; /* Ensure more space between the image and top */
+  }
+
+  .info h1 {
+      font-size: 2.5em;
+  }
+
+  .info h3 {
+      font-size: 1.2em;
+  }
+
+  /* About Section */
+  .about-box h1 {
+      font-size: 2.5em;
+  }
+
+  .about-box h2 {
+      font-size: 2em;
+  }
+
+  /* Projects Section */
+  .project-item {
+      width: 100%;
+  }
+
+  /* Contact Section */
+  .contact-info h2 {
+      font-size: 1.8rem;
+  }
+
+  .contact-form {
+    max-width: 400px; /* Further reduce form width */
+    padding: 1em; /* Reduce padding */
+  }
+
+  form input, textarea {
+      font-size: 0.9em; /* Slightly smaller input text */
+      padding: 0.8em; /* Reduce padding inside inputs */
+  }
+
+  .send-btn {
+      font-size: 1em; /* Adjust button font size */
+      padding: 8px 12px; /* Adjust button padding */
+  }
+
+  /* Footer */
+  .footer-container {
+      padding: 0 10px;
+  }
 }
